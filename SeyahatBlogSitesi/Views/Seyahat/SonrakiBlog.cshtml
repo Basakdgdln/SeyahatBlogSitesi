@@ -1,0 +1,12 @@
+﻿@using SeyahatBlogSitesi.Models.Siniflar
+@model List<BlogDetay>
+
+@foreach (var x in Model)
+{
+    <div class="sidebar-box">
+        @*<img src="@x.BlogImage" class="img-fluid mb-4 w-50 rounded-circle ">*@
+        <h3 class="text-black">@x.Baslik</h3>
+        <p>@x.Giris.Substring(0, 100)...</p>
+        <p><a href="/Blog/BlogDetay/@x.UlkeID/@x.RehberID" class="btn btn-primary btn-md text-white">Devamını oku</a></p>
+    </div>
+}

@@ -1,0 +1,39 @@
+﻿@using SeyahatBlogSitesi.Models.Siniflar
+@model List<Yorumlar>
+@{
+    ViewBag.Title = "YorumGetir";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<br />
+<ol class="breadcrumb mb-4">
+    @if (ViewBag.d1 == 0)
+    {
+        <li class="breadcrumb-item active">Hiç yorum bulunmamaktadır.</li>
+    }
+    else
+    {
+        <li class="breadcrumb-item active">@ViewBag.d1 yorum bulunmaktadır.</li>
+    }
+
+</ol>
+
+<table class="table table-hover">
+    <tr>
+        <td>KULLANICI ADI</td>
+        <td>MAİL </td>
+        <td>YORUM</td>
+        <td>SİL</td>
+    </tr>
+
+    @foreach (var z in Model)
+    {
+        <tr>
+            <td>@z.KullaniciAdi</td>
+            <td>@z.Mail</td>
+            <td>@z.Yorum</td>
+            <td><a href="/Admin/YorumSil" class="btn btn-danger">Sil</a></td>
+        </tr>
+    }
+</table>
+

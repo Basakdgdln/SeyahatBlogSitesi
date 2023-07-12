@@ -1,0 +1,225 @@
+﻿@model SeyahatBlogSitesi.Models.Siniflar.Class1
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<nav class="site-nav mt-3">
+    <div class="container">
+
+        @Html.Action("Partial1", "Blog")
+
+    </div>
+</nav>
+
+
+<div class="hero overlay">
+    <div class="img-bg rellax">
+        <img src="~/untree.co-sterial/images/hero_1.jpg" alt="Image" class="img-fluid">
+    </div>
+
+    <div class="container">
+        <div class="row align-items-center justify-content-start">
+            <div class="col-lg-5">
+                <h1 class="heading" data-aos="fade-up">“Öyle zamanlar olur ki; </h1>
+                <p class="mb-5" data-aos="fade-up">nereye gittiğin önemini yitirir.  Çünkü asıl önemli olan, yanında kiminle gittiğindir…”  <br/><i style="float:right">Tolstoy</i></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section section-2">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0">
+                <div class="image-stack mb-5 mb-lg-0">
+                    <div class="image-stack__item image-stack__item--bottom" data-aos="fade-up">
+                        <img src="~/untree.co-sterial/images/img_v_1.jpg" alt="Image" class="img-fluid rellax ">
+                    </div>
+                    <div class="image-stack__item image-stack__item--top" data-aos="fade-up" data-aos-delay="100" data-rellax-percentage="0.5">
+                        <img src="~/untree.co-sterial/images/img_v_2.jpg" alt="Image" class="img-fluid">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4 order-lg-1">
+
+                <div>
+                    <h2 class="heading mb-3" data-aos="fade-up" data-aos-delay="100">Dünyanın Her Köşesini Bizimle Keşfedin</h2>
+                    @foreach (var x in Model.Hakkımızda)
+                    {
+                        <p data-aos="fade-up" data-aos-delay="200">@x.Hakkimizda</p>
+                        <p class="my-4" data-aos="fade-up" data-aos-delay="300"><a href="/Hakkımızda/Index" class="btn btn-primary">Daha fazla</a></p>
+                    }
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 mb-4 mb-lg-0">
+                <div class="heading-content" data-aos="fade-up">
+                    <h2>Seyahat <span class="d-block">Rehberi</span></h2>
+                    <p>Seyahate çıktığınızda sizlere yardımcı olacak ipuçları için seyehat rehberine göz atın...</p>
+                    <p class="my-4" data-aos="fade-up" data-aos-delay="300"><a href="#" class="btn btn-primary">Tümünü gör</a></p>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="row">
+                    @foreach (var x in Model.Rehber)
+                    {
+                        <div class="col-6 col-md-6 col-lg-3 mb-4 mb-lg-0 text-center" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-1 left-0 mb-5">
+                                <span class="icon">
+                                    <img src="~/untree.co-sterial/images/svg/09.svg" alt="Image" class="img-fluid">
+                                </span>
+                                <div>
+                                    <h3>@x.Rehber</h3>
+                                    <p>@x.Aciklama  </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="section section-3" data-aos="fade-up" data-aos-delay="100">
+    <div class="container">
+        <div class="row align-items-center justify-content-between  mb-5">
+            <div class="col-lg-5" data-aos="fade-up">
+                <h2 class="heading mb-3"> En Çok Beğenilen Gönderiler</h2>
+                <p>Sizlerden gelen etkileşim ile belirlenen en çok beğenilen gönderiler. Keyifli okumalar...<p>
+            </div>
+            <div class="col-lg-5 text-md-end" data-aos="fade-up" data-aos-delay="100">
+                <div id="destination-controls">
+                    <span class="prev me-3" data-controls="prev">
+                        <span class="icon-chevron-left"></span>
+
+                    </span>
+                    <span class="next" data-controls="next">
+                        <span class="icon-chevron-right"></span>
+
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="destination-slider-wrap">
+        <div class="destination-slider">
+            @foreach (var x in Model.Blog)
+            {
+                <div class="destination">
+                    <div class="thumb">
+                        <img src="@x.BlogImage" alt="Image" class="img-fluid" style="height:350px; ">
+                        <div class="price"></div>
+                    </div>
+                    <div class="mt-4">
+                        <h3><a href="#">@x.Baslik</a></h3>
+                        <span class="meta">@x.Tarih.ToShortDateString() @x.Tarih.ToShortTimeString()</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-5 mb-4 mb-lg-0 order-lg-2" data-aos="fade-up">
+                <img src="~/untree.co-sterial/images/img-1.jpg" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="heading mb-4">Tatlı Anılar Yeniden Canlanıyor</h2>
+                <p>Seyahat etmek, dünyayı görmek, yeni yerler ve kültürler keşfetmek ne kadar güzel değil mi? Peki ya sonrası? Fotoğraflar; anılarımızı ve hikayelerimizi en iyi anlatan somut belgeler. Atölyede, kendi sehayatlerimizden veya sergide gördüğümüz fotoğraflardan bize kalan bir anıyı canlandırıyoruz.</p>
+                <p>Bu anıyı tekrar yaşatacak aracımız olan fotoğraf makinesinin maketini yapıp, ardından da anımızı resmediyoruz. Resmettiğimiz anımızı, meydana getirdiğimiz makinenin çıkış gözünden alıp, arkadaşlarımızla hikayesini paylaşıyoruz. Böylece hem el becerimizi geliştiriyoruz, hem de hayal gücümüzü kullanarak bir anımızı görsel ve sözel olarak ifade etmeyi öğreniyoruz. </p>
+                <p class="my-4" data-aos="fade-up" data-aos-delay="200"><a href="/Seyahat/SeyahatRehberi/1" class="btn btn-primary">Daha fazla</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section bg-light">
+    <h2 class="heading mb-5 text-center">SİZLERDEN GELENLER</h2>
+    <div class="text-center mb-5">
+        <div id="prevnext-testimonial">
+            <span class="prev me-3" data-controls="prev">
+                <span class="icon-chevron-left"></span>
+
+            </span>
+            <span class="next" data-controls="next">
+                <span class="icon-chevron-right"></span>
+
+            </span>
+        </div>
+    </div>
+
+    <div class="wide-slider-testimonial-wrap">
+        <div class="wide-slider-testimonial">
+            @foreach (var x in Model.Yorum)
+            {
+                <div class="item">
+                    <blockquote class="block-testimonial">
+                        <div class="author">
+                            <img src="~/untree.co-sterial/images/world-dotted-map.png" />
+
+                            <h3>@x.KullaniciAdi</h3>
+                            <p class="position mb-5">@x.Mail</p>
+                        </div>
+                        <p>
+                            <div class="quote">&ldquo;</div>
+                            &ldquo;@x.Yorum&rdquo;
+                        </p>
+                    </blockquote>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<div class="section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12" data-aos="fade-up" data-aos-delay="0">
+
+                <h2 class="heading mb-5">Son Gönderiler</h2>
+            </div>
+        </div>
+
+        @Html.Action("SonGönderiler", "Default")
+
+    </div>
+</div>
+
+
+
+<div class="py-5 bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 text-center mb-3 mb-lg-0 text-lg-start">
+                <h3 class="text-white m-0">Maceralı yolculuğunuza buradan başlayın.</h3>
+            </div>
+            <div class="col-lg-5 text-center text-lg-end">
+                <a href="/Default/Index" class="btn btn-outline-white">Şimdi Başla</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

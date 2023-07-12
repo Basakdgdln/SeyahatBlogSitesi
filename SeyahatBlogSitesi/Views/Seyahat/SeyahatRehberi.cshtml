@@ -1,0 +1,86 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model SeyahatBlogSitesi.Models.Siniflar.Class3
+@{
+    ViewBag.Title = "SeyahatRehberi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<nav class="site-nav mt-3">
+    <div class="container">
+
+        @Html.Action("Partial1", "Blog")
+
+    </div>
+</nav>
+
+
+<div class="hero overlay">
+
+    <div class="img-bg rellax">
+        <img src="~/untree.co-sterial/images/img-4.jpg" class="img-fluid" style="width:1700px; height:700px" />
+    </div>
+
+
+    <div class="container">
+        <div class="row align-items-center justify-content-start">
+            <div class="col-lg-5">
+                <h1 class="heading" data-aos="fade-up">“Turistler nereye gittiklerini, </h1>
+                <p class="mb-5" data-aos="fade-up">
+                    gezginler nereye gideceklerini bilemezler.” <br />
+                    <i style="float:right">Paul Theroux </i>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="heading-content" data-aos="fade-up">
+                    @foreach (var x in Model.Rehber)
+                    {
+                        <h2> @x.Rehber</h2>
+                        <p>@x.Aciklama</p>
+                    }
+
+                    <p class="my-4" data-aos="fade-up" data-aos-delay="300"><a href="#" class="btn btn-primary">View All</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var s in Model.Detay)
+            {
+                <div class="col-lg-3">
+                    <div class="bg-white m-body">
+                        <div class="service-2 left-0 mb-5">
+                            <img src="@s.UlkeResim" class="img-fluid mb-4 rounded" style="width:350px; height:300px;">
+                            <span class="date">@s.Tarih.ToShortDateString() @s.Tarih.ToShortTimeString()</span>
+                            <div>
+                                <a href="/Seyahat/SeyahatDetay/@s.UlkeID/@s.RehberID"><h3>@s.Baslik</h3></a>
+                                <p>@s.Giris.Substring(0, 100)</p>
+                                <p><a href="/Seyahat/SeyahatDetay/@s.UlkeID/@s.RehberID" class="more">Devamını Oku</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+        </div>
+
+        <div class="pagination" style="justify-content:center">
+            @Html.PagedListPager((IPagedList)Model.Detay, sayfa => Url.Action("SeyahatRehberi", new { sayfa }), new PagedListRenderOptions
+            {
+                LiElementClasses = new List<string>
+                { "page-link" }
+            })
+        </div>
+    </div>
+</div>
+

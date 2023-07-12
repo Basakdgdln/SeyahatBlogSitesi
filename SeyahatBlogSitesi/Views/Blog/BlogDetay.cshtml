@@ -1,0 +1,95 @@
+﻿@model SeyahatBlogSitesi.Models.Siniflar.Class1
+@{
+    ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<nav class="site-nav mt-3">
+    <div class="container">
+
+        @Html.Action("Partial1", "Blog")
+
+    </div>
+</nav>
+
+
+<div class="hero overlay">
+    @foreach (var x in Model.Blog)
+    {
+        <div class="img-bg rellax">
+            <img src="@x.BlogImage" class="img-fluid" style="width:1700px; height:650px" />
+        </div>
+        <div class="container">
+            <div class="row align-items-center justify-content-start">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h1 class="heading" data-aos="fade-up" style="height:300px;"></h1>
+                    <p data-aos="fade-up"></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 blog-content pe-5">
+                @foreach (var X in Model.Blog)
+                {
+                    <p class="lead"><h2>@X.Baslik</h2></p>
+                    <p>@X.Giris</p>
+                    <blockquote>@X.Gelisme</blockquote>
+                    <p>@X.Sonuc</p>
+
+
+                    <div class="col-lg-6  ">
+                        <p>TARİH : <a href="#">@X.Tarih.ToShortDateString() &nbsp;&nbsp;</a> Saat : <a href="#"> @X.Tarih.ToShortTimeString()</a></p>
+
+                    </div>
+                }
+
+                <div class="pt-5">
+                    <h3 class="mb-5">@ViewBag.d2</h3>
+
+                    @Html.Action("YorumGetir", "Blog")
+
+                    @Html.Action("YorumEkle", "Blog")
+                </div>
+            </div>
+
+            <div class="col-md-4 sidebar">
+                <div class="sidebar-box" >
+                    @using (Html.BeginForm("BlogDetay", "Blog", FormMethod.Get))
+                    {
+                        <form method="get" class=" search-form">
+                            <div class="form-group">
+                                <span class="icon fa fa-search"> </span>
+                                <input type="text" class="form-control" placeholder="Anahtar kelime..." name="p" style="font-size:larger"/>
+                            </div>
+                        </form>
+                    }
+                </div>
+
+                <div class="sidebar-box">
+                    <div class="categories">
+                        <h3>Seyahat Rehberi</h3>
+                        @foreach (var x in Model.Rehber)
+                        {
+                            <li>
+                                <a href="/Seyahat/SeyahatRehberi/@x.RehberID">@x.Rehber</a>
+                            </li>
+                        }
+                    </div>
+                </div>
+
+                @Html.Action("SonrakiBlog", "Blog")
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

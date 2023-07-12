@@ -1,0 +1,113 @@
+﻿@model SeyahatBlogSitesi.Models.Siniflar.Class2
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<body>
+
+    <nav class="site-nav mt-3">
+        <div class="container">
+
+            @Html.Action("Partial1", "Blog")
+
+        </div>
+    </nav>
+
+    <div class="hero overlay">
+        @foreach (var x in Model.Hakkımızda)
+        {
+            <div class="img-bg rellax">
+                <img src="@x.FotoUrl" class="img-fluid">
+            </div>
+        }
+
+        <div class="container">
+            <div class="row align-items-center justify-content-start">
+                <div class="col-lg-5">
+
+                    <h1 class="heading" data-aos="fade-up">“Seyahat etmek, </h1>
+                    <p class="mb-5" data-aos="fade-up"> hayal gücümüzü gerçeklerle dengeler ve bazı şeylerin nasıl olduğunu düşünmek yerine onları görmemizi sağlar.” <br />
+                                                                                                                                                                      <i style="float:right">S. Johnson</i>
+                    </p>
+
+                    <div data-aos="fade-up">
+                        <a href="#" class="play-button align-items-center d-flex glightbox3">
+                            <span class="#">
+                                <span class="icon"></span>
+                            </span>
+                            <span class="caption"></span>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="section section-2">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0">
+                    <div class="image-stack mb-5 mb-lg-0">
+                        <div class="image-stack__item image-stack__item--bottom" data-aos="fade-up">
+                            <img src="~/untree.co-sterial/images/img_v_1.jpg" alt="Image" class="img-fluid rellax ">
+                        </div>
+                        <div class="image-stack__item image-stack__item--top" data-aos="fade-up" data-aos-delay="100" data-rellax-percentage="0.5">
+                            <img src="~/untree.co-sterial/images/img_v_2.jpg" alt="Image" class="img-fluid">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 order-lg-1">
+
+                    <div>
+                        <h2 class="heading mb-3" data-aos="fade-up" data-aos-delay="100">Dünyanın Her Köşesini Bizimle Keşfedin </h2>
+                        @foreach (var x in Model.Hakkımızda)
+                        {
+                            <p data-aos="fade-up" data-aos-delay="200">@x.Hakkimizda</p>
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 mx-auto text-center">
+                    <div class="heading-content" data-aos="fade-up">
+                        <h2 class="heading">YOLaÇIK Ekibimizle Tanışın</h2>
+                        <p>“Öyle zamanlar olur ki; nereye gittiğin önemini yitirir. Çünkü asıl önemli olan, yanında kiminle gittiğindir…”</p>
+                        <p style="float:right"> Tolstoy</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                @foreach (var s in Model.Ekip)
+                {
+                    <div class="col-lg-3">
+                        <a href="#" class="person">
+                            <img src="@s.FotoUrl" class="img-fluid mb-4" style="height:350px; width:400px">
+                            <span class="subheading d-inline-block">@s.Görev</span>
+                            <h3 class="mb-3">@s.AdSoyad</h3>
+                            <p class="text-muted">@s.Hakkında</p>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+

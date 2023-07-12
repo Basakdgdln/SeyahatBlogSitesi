@@ -1,0 +1,77 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using SeyahatBlogSitesi.Models.Siniflar
+@model PagedList.IPagedList<Blog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+<br />
+<table class="table table-bordered">
+    <tr style="text-align:center">
+        <th>ID</th>
+        <th>BAŞLIK</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        <th>DETAYLAR</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td style="text-align:center">#</td>
+            <td>@x.Baslik</td>
+            <td style="text-align:center"><a href="/Admin/BlogSil/@x.ID" class="btn btn-warning">SİL</a></td>
+            <td style="text-align:center"><a href="/Admin/BlogGetir/@x.ID" class="btn btn-success" id="btn1">GÜNCELLE</a></td>
+            <td style="text-align:center"><a href="/Admin/YorumGetir/@x.ID" class="btn btn-secondary">DETAYLAR</a></td>
+        </tr>
+    }
+</table>
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#modal1">YENİ BLOG EKLE</button>
+<div class="modal" id="modal1">
+    <div class="modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Yeni Blog Ekleme Sayfası</h2>
+                <button class="btn btn-danger" data-dismiss="modal">x</button>
+            </div>
+            <form method="post" action="/Admin/YeniBlog">
+                <div class="modal-body">
+                    <label>BAŞLIK</label>
+                    <input type="text" class="form-control" style="border: groove; border-radius: 10px; " name="Baslik" />
+                    <br />
+                    <label>GİRİŞ</label>
+                    <input type="text" class="form-control" style="border: groove; min-height: 75px; border-radius: 10px;" name="Giris" />
+                    <br />
+                    <label>GELİŞME</label>
+                    <input type="text" class="form-control" style="border: groove; min-height: 75px; border-radius: 10px; " name="Gelisme" />
+                    <br />
+                    <label>SONUÇ</label>
+                    <input type="text" class="form-control" style="border: groove; min-height: 75px; border-radius: 10px; " name="Sonuc" />
+                    <br />
+                    <label>GÖRSEL</label>
+                    <input type="file" name="BlogImage" />
+                    <br />
+                    <label>TARİH</label>
+                    <input type="datetime-local" class="form-control" style="border: groove; border-radius: 10px;" name="Tarih" />
+                    <br />
+                    <label>BLOG TÜR</label>  &nbsp;&nbsp;
+                    Dünya <input type="radio" value="Dünya" name="BlogTür"  />  &nbsp;&nbsp;
+                    Türkiye <input type="radio" value="Türkiye" name="BlogTür" />
+                    <br /><br />
+                    <button type="submit" class="btn btn-primary">Bloğu Ekle</button>
+                    <br /><br />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+
+@Html.PagedListPager(Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions { LiElementClasses = new List<string> { "page-link" } })
+

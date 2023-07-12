@@ -1,0 +1,26 @@
+﻿@using SeyahatBlogSitesi.Models.Siniflar
+@model List<İletisim>
+@{
+    ViewBag.Title = "GelenMesajlar";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>AD SOYAD</th>
+        <th>MAİL</th>
+        <th>KONU</th>
+        <th>MESAJ</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.AdSoyad</td>
+            <td>@x.Mail</td>
+            <td>@x.Konu</td>
+            <td>@x.Mesaj</td>
+        </tr>
+    }
+</table>
+

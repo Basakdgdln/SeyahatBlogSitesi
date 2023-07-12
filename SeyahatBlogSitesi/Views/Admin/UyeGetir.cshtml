@@ -1,0 +1,30 @@
+﻿@model SeyahatBlogSitesi.Models.Siniflar.Ekip
+@{
+    ViewBag.Title = "UyeGetir";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@using (Html.BeginForm("UyeGuncelle", "Admin", FormMethod.Post, new { enctpe = "multipart/form-data" }))
+{
+    <form class="form-group" method="post">
+
+        @Html.HiddenFor(x => x.ID)
+        @Html.LabelFor(x => x.AdSoyad)
+        @Html.TextBoxFor(x => x.AdSoyad, null, new { @class = "form-control", @style = "border:groove" })
+        <br />
+
+        @Html.LabelFor(x => x.Görev)
+        @Html.TextBoxFor(x => x.Görev, new { @class = "form-control", @style = "border:groove" })
+        <br />
+
+        @Html.LabelFor(x => x.Hakkında)
+        @Html.TextBoxFor(x => x.Hakkında, new { @class = "form-control", @style = "border:groove" })
+        <br />
+
+        @Html.LabelFor(x => x.FotoUrl)
+        <input type="file" name="FotoUrl" />
+        <br /><br />
+        <button class=" btn btn-primary"type="submit">Güncelle</button>
+    </form>
+
+}

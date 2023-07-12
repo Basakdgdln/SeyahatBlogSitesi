@@ -1,0 +1,51 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<SeyahatBlogSitesi.Models.Siniflar.Seyahatler>
+@{
+    ViewBag.Title = "GeziMedya";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+<button class="btn btn-outline-primary" data-toggle="modal" data-target="#Modal1" style="float:right">YENİ ÜLKE EKLE</button>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Ülke Ekleme Ekranı</h2>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">x</button>
+            </div>
+            <form method="post" action="/Admin/UlkeEkle">
+                <div class="modal-body">
+                    <label>ÜLKE </label>
+                    <input type="text" name="UlkeAD" class="form-control" style="border:groove" />
+                    <br />
+                    <button type="submit" class="btn btn-info" >Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<table class="table table-bordered">
+    <tr style="text-align:center">
+        <th>ID</th>
+        <th>ÜLKE</th>
+        <th>GÖRÜNTÜLE</th>
+        <th>BLOG EKLE</th>
+    </tr>
+
+    @foreach (var x in Model)
+        {
+            <tr style="text-align:center">
+                <td>@x.UlkeID</td>
+                <td>@x.UlkeAD</td>
+                <td><a href="/Admin/SeyahatBlogDetay/@x.UlkeID" class="btn btn-success"> GÖRÜNTÜLE</a></td>
+                <td><a href="/Admin/BlogEkle/@x.UlkeID" class="btn btn-warning"> BLOG EKLE</a></td>
+            </tr>
+    }
+</table>
+<br />
+@Html.PagedListPager(Model, sayfa => Url.Action("GeziMedya", new { sayfa }), new PagedListRenderOptions { LiElementClasses = new List<string> { "page-link" } })

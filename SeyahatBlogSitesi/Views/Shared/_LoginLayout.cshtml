@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+   <title>YOLaÇIK Seyehat Blog Sitesi </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/sidebar-09/css/style.css">
+</head>
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                </button>
+            </div>
+            <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+                <div class="user-logo">
+                    <div class="img" style="background-image: url(/sidebar-09/images/logo.jpg);"></div>
+                    <h3>YOLaÇIK</h3>
+                </div>
+            </div>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a href="/Admin/Index"><span class="fa fa-home mr-3"></span> Bloglar</a>
+                </li>
+                <li>
+                    <a href="/Admin/GeziMedya"><span class="fa fa-envira mr-3 "></span> Gezdiğimiz Ülkeler</a>
+                </li>
+                <li>
+                    <a href="/Admin/SeyahatRehberi"><span class="fa fa-book mr-3"></span> Seyahat Rehberi</a>
+                </li>
+                <li>
+                    <a href="/Admin/Ekip"><span class="fa fa-user mr-3"></span> Ekibimiz</a>
+                </li>
+                <li>
+                    <a href="/Admin/GelenMesajlar"><span class="fa fa-comment mr-3"></span> Gelen Mesajlar</a>
+                </li>
+                <li>
+                    <a href="/Admin/HakkımızdaGet"><span class="fa fa-edit mr-3 "></span> Hakkımızda</a>
+                </li>
+                <li>
+                    <a href="/Default/Index"><span class="fa fa-paper-plane mr-3"></span> Siteye Git</a>
+                </li>
+                <li>
+                    <a href="/GirisYap/LogOut"><span class="fa fa-sign-out mr-3"></span> Çıkış Yap</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="~/sidebar-09/js/jquery.min.js"></script>
+    <script src="~/sidebar-09/js/popper.js"></script>
+    <script src="~/sidebar-09/js/bootstrap.min.js"></script>
+    <script src="~/sidebar-09/js/main.js"></script>
+</body>
+</html>

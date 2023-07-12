@@ -1,0 +1,33 @@
+﻿
+@using SeyahatBlogSitesi.Models.Siniflar
+@model List<Yorumlar>
+
+
+<div class="comment-form-wrap pt-5">
+    <h3 class="mb-5">Bir Yorum Yapın...</h3>
+    <form method="post" class="">
+        @using (Html.BeginForm("YorumGetir", "Blog", FormMethod.Post))
+        {
+            <div class="mb-3" hidden>
+                <label for="name">ID *</label>
+                <input type="text" class="form-control" name="BlogID" value="@ViewBag.d1" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="name">Ad Soyad *</label>
+                <input type="text" class="form-control" name="KullaniciAdi">
+            </div>
+            <div class="mb-3">
+                <label for="email">Mail Adresi*</label>
+                <input type="email" class="form-control" name="Mail">
+            </div>
+            <div class="mb-3">
+                <label for="message">Yorum</label>
+                <textarea name="Yorum" id="message" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Yorum Gönder" class="btn btn-primary btn-md text-white">
+            </div>
+        }
+    </form>
+</div>
+

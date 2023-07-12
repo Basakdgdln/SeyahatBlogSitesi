@@ -1,0 +1,56 @@
+﻿@using SeyahatBlogSitesi.Models.Siniflar
+@model List<BlogDetay>
+@{
+    ViewBag.Title = "SeyahatBlogDetay";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<br />
+<table class="table table-bordered">
+    <tr style="text-align:center">
+        <th>BAŞLIK</th>
+        <th>GİRİŞ</th>
+        <th>GELİŞME</th>
+        <th>SONUÇ</th>
+        <th>DETAY</th>
+        <th>ALT DETAY</th>
+        <th>TARİH</th>
+        <th>REHBER</th>
+        <th>SİL</th>
+        <th>DETAYLAR</th>
+
+    </tr>
+
+    @foreach (var x in Model)
+    {
+<tr>
+    <td>@x.Baslik</td>
+    <td>@x.Giris.Substring(0, 50)...</td>
+    <td>@x.Gelisme.Substring(0, 50)...</td>
+    <td>@x.Sonuc.Substring(0, 50)...</td>
+
+    @if (x.Detay != null)
+    {
+        <td>@x.Detay.Substring(0, 50)...</td>
+    }
+    else
+    {
+        <td>NULL</td>
+    }
+
+    @if (x.Detay1 != null)
+    {
+        <td>@x.Detay1.Substring(0, 50)...</td>
+    }
+    else
+    {
+        <td>NULL</td>
+    }
+
+    <td>@x.Tarih.ToShortDateString() @x.Tarih.ToShortTimeString()</td>
+    <td>@x.SeyahatRehberi.Rehber</td>
+    <td><a href="/Admin/BlogDetaySil/@x.BlogID" class="btn btn-danger">Sil</a></td>
+    <td><a href="/Admin/BlogDetay/@x.BlogID" class="btn btn-warning">Detaylar</a></td>
+
+</tr>
+    }
+</table>

@@ -1,0 +1,104 @@
+﻿@model List<SeyahatBlogSitesi.Models.Siniflar.Hakkımızda>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<body>
+
+    <nav class="site-nav mt-3">
+        <div class="container">
+
+            @Html.Action("Partial1", "Blog")
+
+        </div>
+    </nav>
+
+    <div class="hero overlay">
+        <div class="img-bg rellax">
+            <img src="~/untree.co-sterial/images/hero_2.jpg" alt="Image" class="img-fluid">
+        </div>
+        <div class="container">
+            <div class="row align-items-center justify-content-start">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h1 class="heading" data-aos="fade-up">“Gezmek </h1>
+                    <p data-aos="fade-up"> bir zamanlar insan ve evren arasında var olan uyumu tekrar kurar.”  <br />
+                        <i style="float:right">Andre Gide</i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12" data-aos="fade-up" data-aos-delay="0">
+
+                    <h2 class="heading mb-5">SOSYAL MEDYA</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-info">
+                        @foreach (var x in Model)
+                        {
+                            <div class="address mt-4">
+                                <i class="icon-facebook"></i>
+                                <h4 class="mb-2">Facebook</h4>
+                                <p>@x.Facebook</p>
+                            </div>
+
+                            <div class="open-hours mt-4">
+                                <i class="icon-instagram"></i>
+                                <h4 class="mb-2">İnstagram</h4>
+                                <p>@x.İnstagram</p>
+                            </div>
+
+                            <div class="email mt-4">
+                                <i class="icon-twitter"></i>
+                                <h4 class="mb-2">Twitter</h4>
+                                <p>@x.Twitter</p>
+                            </div>
+
+                            <div class="phone mt-4">
+                                <i class="icon-mail-forward"></i>
+                                <h4 class="mb-2">Mail</h4>
+                                <p>@x.Mail<p>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                    @using (Html.BeginForm("İletisimEkle", "İletisim", FormMethod.Post))
+                    {
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <input type="text" class="form-control" name="AdSoyad" placeholder="Ad Soyad">
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <input type="email" class="form-control" name="Mail" placeholder="Email">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" class="form-control" name="Konu" placeholder="Konu">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Mesaj..."></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="submit" value="Mesajı Gönder" name="Mesaj" class="btn btn-primary">
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.untree_co-section -->
+</body>
+
+
+

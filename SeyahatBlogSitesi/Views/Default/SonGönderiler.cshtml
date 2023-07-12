@@ -1,0 +1,28 @@
+﻿@using SeyahatBlogSitesi.Models.Siniflar
+@model List<Blog>
+
+<div class="row align-items-stretch">
+    @foreach (var x in Model)
+    {
+        <div class="col-6 col-sm-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="media-entry">
+                <a href="#">
+                    <img src="@x.BlogImage" alt="Image" class="img-fluid" style="width:310px; height:300px;">
+                </a>
+                <div class="bg-white m-body">
+                    <span class="date">@x.Tarih</span>
+                    <h3><a href="#">@x.Baslik</a></h3>
+                   <p>@x.Giris.Substring(0, 100)...</p>
+
+                    <a href="/Blog/BlogDetay/@x.ID" class="more d-flex align-items-center float-start">
+                        <span class="label">Devamını oku</span>
+                        <span class="arrow"><span class="icon-keyboard_arrow_right"></span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+

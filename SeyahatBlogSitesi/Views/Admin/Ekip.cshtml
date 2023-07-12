@@ -1,0 +1,138 @@
+﻿@model SeyahatBlogSitesi.Models.Siniflar.Class2
+@{
+    ViewBag.Title = "Ekip";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+<button class="btn btn-outline-primary" data-toggle="modal" data-target="#modal2" style="float:right"> Yeni Ekip Üyesi Ekle</button>
+<br />
+<div class="modal" id="modal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Ekip Üyesi Ekleme Paneli</h2>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">x</button>
+            </div>
+            @using (Html.BeginForm("UyeEkle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <form method="post">
+                    <div class="modal-body">
+                        <label>Ad Soyad</label>
+                        <input type="text" name="AdSoyad" class="form-control" style="border:groove" />
+                        <br />
+                        <label>Görev</label>
+                        <input type="text" name="Görev" class="form-control" style="border:groove" />
+                        <br />
+                        <label>Hakkında</label>
+                        <input type="text" name="Hakkında" class="form-control" style="border:groove" />
+                        <br />
+                        <label>Görsel</label>
+                        <input type="file" name="FotoUrl" />
+                        <br /><br />
+                        <input type="submit" class="btn btn-primary" style="float:right" name="Üyeyi Ekle" />
+                        <br /><br />
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Contacts</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Navbar -->
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <!-- Content Wrapper. Contains page content -->
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1></h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main content -->
+        @*<section class="content">*@
+        <!-- Default box -->
+        <div class="card card-solid">
+            <div class="card-body pb-0">
+                <div class="row d-flex align-items-stretch">
+                    @foreach (var x in Model.Ekip)
+                    {
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                            <div class="card bg-light">
+                                <div class="card-header text-muted border-bottom-0">
+                                    <b>@x.Görev</b>
+                                </div>
+                                <br />
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>@x.AdSoyad</b></h2>
+                                            <p class="text-muted text-sm"><b>Hakkında: </b> @x.Hakkında </p>
+
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="@x.FotoUrl" alt="" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="/Admin/UyeGetir/@x.ID" class="btn btn-sm bg-teal">
+                                            <i class="fas fa-comments"></i> Değişiklik Yap
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        @*</section>*@
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+</body>
+</html>
+

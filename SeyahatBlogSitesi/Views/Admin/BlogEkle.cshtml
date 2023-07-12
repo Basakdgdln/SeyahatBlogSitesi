@@ -1,0 +1,70 @@
+﻿@model SeyahatBlogSitesi.Models.Siniflar.BlogDetay
+@{
+    ViewBag.Title = "BlogEkle";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+@using (Html.BeginForm("BlogEkle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.Seyahatler.UlkeAD)
+    @Html.TextBoxFor(x => x.Seyahatler.UlkeAD, new { @class = "form-control", @style = "border:ridge", @required = "", @Value=ViewBag.d2, @readonly="readonly" })
+    <br />
+
+    @Html.LabelFor(x => x.SeyahatRehberi.Rehber)
+    @Html.DropDownListFor(x => x.SeyahatRehberi.RehberID, (List<SelectListItem>)ViewBag.d1, new { @class = "form-control", @style = "border:ridge" })
+    <br />
+
+    @Html.LabelFor(x => x.Baslik)
+    @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control", @style = "border:ridge", @required = "" })
+    <br />
+
+    @Html.LabelFor(x => x.Giris)
+    @Html.TextAreaFor(x => x.Giris, new { @class = "form-control", @style = "border:ridge", @required = "" })
+    <br />
+
+    @Html.LabelFor(x => x.Resim1)
+    <input type="file" name="Resim1" required="" />
+    <br />
+    @Html.LabelFor(x => x.Gelisme)
+    @Html.TextAreaFor(x => x.Gelisme, new { @class = "form-control", @style = "border:ridge", @required = "" })
+    <br />
+
+    @Html.LabelFor(x => x.Resim2)
+    <input type="file" name="Resim2" required"" />
+    <br />
+
+    @Html.LabelFor(x => x.Sonuc)
+    @Html.TextAreaFor(x => x.Sonuc, new { @class = "form-control", @style = "border:ridge", @required = "" })
+    <br />
+
+    @Html.LabelFor(x => x.Resim3)
+    <input type="file" name="Resim3" required />
+    <br />
+
+    @Html.LabelFor(x => x.Detay)
+    @Html.TextAreaFor(x => x.Detay, new { @class = "form-control", @style = "border:ridge" })
+    <br />
+
+    @Html.LabelFor(x => x.Resim4)
+    <input type="file" name="Resim4" />
+    <br />
+
+    @Html.LabelFor(x => x.Detay1)
+    @Html.TextAreaFor(x => x.Detay1, new { @class = "form-control", @style = "border:ridge" })
+    <br />
+
+    @Html.LabelFor(x => x.Resim5)
+    <input type="file" name="Resim5" />
+    <br />
+
+    @Html.LabelFor(x => x.Tarih)
+    <input type="datetime-local" class="form-control" style="border: ridge" name="Tarih" required="" />
+    <br />
+
+    @Html.LabelFor(x => x.UlkeResim)
+    <input type="file" name="UlkeResim" required="" />
+    <br /><br />
+    <button class="btn btn-primary" type="submit">BLOĞU KAYDET</button>
+</form>
+}
+

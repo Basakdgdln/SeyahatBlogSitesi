@@ -1,0 +1,55 @@
+﻿@using SeyahatBlogSitesi.Models.Siniflar
+@model List<SeyahatRehberi>
+@{
+    ViewBag.Title = "SeyahatRehberi";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<br />
+
+<table class="table table-bordered">
+    <tr style="text-align:center">
+        <th>REHBER</th>
+        <th>AÇIKLAMA</th>
+        <th>GÜNCELLE</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td style="text-align:center">@x.Rehber</td>
+            <td>@x.Aciklama</td>
+            <td style="text-align:center"><a href="/Admin/SeyahatGetir/@x.RehberID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<br />
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1" >REHBER EKLE</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Rehber Ekleme Ekranı</h2>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">x</button>
+            </div>
+            <form method="post" action="/Admin/RehberEkle">
+                <div class="modal-body">
+                    <label>RehberAd </label>
+                    <input type="text" name="Rehber" class="form-control" style="border:groove" />
+                    <br />
+                    <label>Açıklama </label>
+                    <input type="text" name="Aciklama" class="form-control" style="border:groove" />
+                    <br />
+                    <button type="submit" class="btn btn-info" id="btn1">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+<script>
+    $('#btn1').click(function () {
+        alert("Ekleme işlemi başarılı...")
+    });
+</script>

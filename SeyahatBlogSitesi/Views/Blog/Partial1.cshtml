@@ -1,0 +1,56 @@
+﻿@model SeyahatBlogSitesi.Models.Siniflar.Class3
+
+    <div class="site-navigation">
+    <div class="row">
+        <div class="col-6 col-lg-3">
+            <a href="/Default/Index" class="logo m-0 float-start">YOLaÇIK</a>
+        </div>
+
+        <div class="col-lg-6 d-none d-lg-inline-block text-center nav-center-wrap">
+            <ul class="js-clone-nav  text-center site-menu p-0 m-0">
+                <li class="active"><a href="/Default/Index">ANA SAYFA</a></li>
+
+                <li class="has-children">
+                    <a href="#">GEZİMEDYA</a>
+                    <ul class="dropdown">
+                        @foreach (var x in Model.Seyehat)
+                        {
+                            <li><a href="/Seyahat/Index/@x.UlkeID/1">@x.UlkeAD</a></li>
+                        }
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#">SEYAHAT REHBERİ</a>
+                    <ul class="dropdown">
+                        @foreach (var x in Model.Rehber)
+                        {
+                            <li><a href="/Seyahat/SeyahatRehberi/@x.RehberID">@x.Rehber</a></li>
+                        }
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#">BLOG</a>
+                    <ul class="dropdown">
+                        <li><a href="/Blog/Index">YURT DIŞI</a></li>
+                        <li><a href="/Blog/Index2">TÜRKİYE</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Hakkımızda/Index">BİZ KİMİZ?</a></li>
+
+            </ul>
+        </div>
+        <div class="col-6 col-lg-3 text-lg-end">
+            <ul class="js-clone-nav d-none d-lg-inline-block text-end site-menu ">
+                <li class="cta-button"><a href="/İletisim/Index">BİZE ULAŞIN</a></li>
+            </ul>
+
+            <a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+                <span></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+

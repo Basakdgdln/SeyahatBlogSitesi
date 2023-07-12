@@ -1,0 +1,73 @@
+﻿@model SeyahatBlogSitesi.Models.Siniflar.Hakkımızda
+@{
+    ViewBag.Title = "HakkımızdaGet";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<br /><br />
+
+@using (Html.BeginForm("HakkımızdaGuncelle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@ViewBag.d1" style="height:575px; width:600px;" />
+            </div>
+
+            <div class="col-md-6">
+                <label>FACEBOOK ADRESİ</label>
+                @Html.TextBoxFor(x => x.Facebook, new { @class = "form-control", @style = "border:groove;", @readonly = "readonly"})
+                <br />
+                <label>İNSTAGRAM ADRESİ</label>
+                @Html.TextBoxFor(x => x.İnstagram, new { @class = "form-control", @style = "border:groove", @readonly = "readonly" })
+                <br />
+                <label>TWİTTER ADRESİ</label>
+                @Html.TextBoxFor(x => x.Twitter, new { @class = "form-control", @style = "border:groove", @readonly = "readonly" })
+                <br />
+                <label>MAİL</label>
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", @style = "border:groove", @readonly = "readonly" })
+                <br />
+                <label>HAKKIMIZDA</label>
+                @Html.TextAreaFor(x => x.Hakkimizda, new { @class = "form-control", @style = "border:groove", @readonly = "readonly" })
+                <br />
+                <label>FOTO URL</label>
+                @Html.TextAreaFor(x => x.FotoUrl, new { @class = "form-control", @style = "border:groove", @readonly = "readonly" })
+                <br />
+
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal1" style="width:220px; height:40px; margin-left:200px">Güncelleme Yap</button>
+                <div class="modal" id="modal1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>Hakkımızda Güncelleme Sayfası</h2>
+                                <button class="btn btn-danger" data-dismiss="modal">x</button>
+                            </div>
+
+                            <div class="modal-body">
+                                <label>FACEBOOK ADRESİ</label>
+                                @Html.TextBoxFor(x => x.Facebook, new { @class = "form-control", @style = "border:groove" })
+                                <br />
+                                <label>İNSTAGRAM ADRESİ</label>
+                                @Html.TextBoxFor(x => x.İnstagram, new { @class = "form-control", @style = "border:groove" })
+                                <br />
+                                <label>TWİTTER ADRESİ</label>
+                                @Html.TextBoxFor(x => x.Twitter, new { @class = "form-control", @style = "border:groove" })
+                                <br />
+                                <label>MAİL</label>
+                                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", @style = "border:groove" })
+                                <br />
+                                <label>HAKKIMIZDA</label>
+                                @Html.TextAreaFor(x => x.Hakkimizda, new { @class = "form-control", @style = "border:groove" })
+                                <br />
+                                <label>Foto url</label>
+                                <input type="file" name="FotoUrl" />
+                                <br /><br />
+                                <button class="btn btn-info" style="float:right">Güncelle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}

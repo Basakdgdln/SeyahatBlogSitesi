@@ -1,0 +1,39 @@
+﻿@model SeyahatBlogSitesi.Models.Siniflar.Blog
+@{
+    ViewBag.Title = "BlogGetir";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@using (Html.BeginForm("BlogGuncelle", "Admin", FormMethod.Post))
+{
+    <form class="form-group" method="post">
+        @Html.LabelFor(x => x.ID)
+        @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly", @style = "border:ridge" })
+        <br />
+        @Html.LabelFor(x => x.Baslik)
+        @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control", @style = "border:ridge" })
+        <br />
+        @Html.LabelFor(x => x.Giris)
+        @Html.TextAreaFor(x => x.Giris, new { @class = "form-control", @style = "border:ridge" })
+        <br />
+        @Html.LabelFor(x => x.Gelisme)
+        @Html.TextAreaFor(x => x.Gelisme, new { @class = "form-control", @style = "border:ridge" })
+        <br />
+        @Html.LabelFor(x => x.Sonuc)
+        @Html.TextAreaFor(x => x.Sonuc, new { @class = "form-control", @style = "border:ridge" })
+        <br />
+        @Html.LabelFor(x => x.Tarih)
+        <input type="text" class="form-control" style="border:ridge" name="Tarih" value="@ViewBag.tarih"/>
+        <br />
+        @Html.LabelFor(x => x.BlogImage)
+        @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control", @style = "border:ridge" })
+        <br />
+        @Html.LabelFor(x => x.BlogTür)  &nbsp;&nbsp;
+        Dünya @Html.RadioButtonFor(x => x.BlogTür, "Dünya") &nbsp;&nbsp;
+        Türkiye  @Html.RadioButtonFor(x => x.BlogTür, "Türkiye")
+        @Html.ValidationMessageFor(x => x.BlogTür, "", new { @style = "color:red" })
+        <br /><br />
+        <button class="btn btn-primary">Bloğu Güncelle</button>
+    </form>
+}
+
